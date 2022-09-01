@@ -1,0 +1,63 @@
+mutation register {
+  register(input: { email: "test@test.com", password: "password", firstName: "Jon Doe",lastName:"Doesa" }) {
+    id
+    firstName
+    lastName
+    email
+  }
+}
+
+mutation login {
+  login(input: { email: "test@test.com", password: "password" }) {
+    id
+    firstName
+    lastName
+    email
+    token
+  }
+}
+
+mutation createPost {
+   createPost(title: "New post", description: "New post description") {
+    id
+    title
+    description
+    createdAt
+  }
+}
+
+query allPosts {
+  getAllPosts {
+    id
+    title
+    description
+    author {
+      id
+      firstName
+    }
+    comments {
+      id
+      description
+    }
+  }
+}
+
+query singlePost {
+  getSinglePost(postId: 1) {
+    id
+    title
+    description
+    author {
+      firstName
+    }
+  }
+}
+
+mutation createComment {
+   createComment(description: "New post comment", postId: 1) {
+    id
+    description
+    createdAt
+  }
+}
+
